@@ -1,7 +1,5 @@
 {
   "name": "HENNGE-Challenge",
-  "version": "1.0.0",
-  "description": "HENNGE challenge for Front End SW Engineer.",
   "scripts": {
     "watch": "webpack --watch"
   },
@@ -20,6 +18,7 @@
     "node-sass": "^4.14.1",
     "sass-loader": "^8.0.2",
     "style-loader": "^1.2.1",
-    "virtual-dom": "^2.1.1"
+    "virtual-dom": "^2.1.1",
+    "virtual-hyperscript-svg": "^2.0.0"
   }
 }
