@@ -1,0 +1,25 @@
+{
+  "name": "HENNGE-Challenge",
+  "version": "1.0.0",
+  "description": "HENNGE challenge for Front End SW Engineer.",
+  "scripts": {
+    "watch": "webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cesperian/HENNGE-challenge.git"
+  },
+  "author": "Chris Esperian",
+  "dependencies": {
+    "materialize-css": "^1.0.0-rc.2"
+  },
+  "devDependencies": {
+    "axios": "^0.19.2",
+    "css-loader": "^3.5.3",
+    "hyperscript-helpers": "^3.0.3",
+    "node-sass": "^4.14.1",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.2.1",
+    "virtual-dom": "^2.1.1"
+  }
+}
