@@ -1,0 +1,106 @@
+[
+	  {
+		"id": 1,
+		"has_attachments": false,
+		"from": "aaa@example.com",
+		"to": [
+		  "zzz.zzz@example.com"
+		],
+		"subject": "[ HR-888 ] Notice of official announcement",
+		"date": "0:20"
+	  },
+	  {
+		"id": 2,
+		"has_attachments": false,
+		"from": "bbb.bbbb@exam",
+		"to": [
+		  "zzz.zzz@example.com"
+		],
+		"subject": "[web:333] \"Web Contact\"",
+		"date": "0:10"
+	  },
+	  {
+		"id": 3,
+		"has_attachments": true,
+		"from": "ccc@example.com",
+		"to": [
+		  "xxx@example.com",
+		  "xxx02@example.com"
+		],
+		"subject": "Happy New Year! Greetings for the New Year.",
+		"date": "0:00"
+	  },
+	  {
+		"id": 4,
+		"has_attachments": false,
+		"from": "ddd.dddd@example.com",
+		"to": [
+		  "vvv.vvv@example.com",
+		  "vvv.vvv02@example.com"
+		],
+		"subject": "[HR-887(Revised: Office Expansion Project Team)] Notice of office closure",
+		"date": "Jan 01"
+	  },
+	  {
+		"id": 5,
+		"has_attachments": false,
+		"from": "eee@example.com",
+		"to": [
+		  "sss@example.com",
+		  "sss02@example.com",
+		  "sss03@example.com"
+		],
+		"subject": "[Github] Logout page",
+		"date": "Jan 01"
+	  },
+	  {
+		"id": 6,
+		"has_attachments": false,
+		"from": "fff.ffff@example.com",
+		"to": [
+		  "qqq.qqq@example.com"
+		],
+		"subject": "[dev]Postfix 3.1.12 / 3.2.9 / 3.3.4 / 3.4.5",
+		"date": "Jan 01"
+	  },
+	  {
+		"id": 7,
+		"has_attachments": false,
+		"from": "ggg@example.com",
+		"to": [
+		  "ppp@example.com"
+		],
+		"subject": "Re: [Github] Brush-up on loading animation",
+		"date": "Jan 01"
+	  },
+	  {
+		"id": 8,
+		"has_attachments": true,
+		"from": "hhh@example.com",
+		"to": [
+		  "ooo@example.com"
+		],
+		"subject": "Workplace Summary for sample, Inc.: Jun 2 - Jun 9",
+		"date": "Jan 01"
+	  },
+	  {
+		"id": 9,
+		"has_attachments": true,
+		"from": "iii@example.com",
+		"to": [
+		  "nnn@example.com"
+		],
+		"subject": "I love you",
+		"date": "2019/12/31"
+	  },
+	  {
+		"id": 10,
+		"has_attachments": false,
+		"from": "Pablo-Diego01@example.com",
+		"to": [
+		  "Pablo-Diego02@example.com"
+		],
+		"subject": "[info:888] ABC EQUIPMENT COMPANY",
+		"date": "2019/12/31"
+	  }
+	]

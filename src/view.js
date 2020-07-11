@@ -2,21 +2,55 @@ import hh from 'hyperscript-helpers';
 import {h} from 'virtual-dom';
 
 import * as icon from './icons'
+import {
+    openStartDatePickerMSG,
+    getEmailsMSG
+} from "./update";
 
-const {div, span, a} = hh(h);
+const {div, span, a, input} = hh(h);
 
 function view(dispatch, model) {
     return div([
         emailSearch(dispatch, model),
-        emailResults(dispatch, model)
+        emailResults(dispatch, model),
+        alert(model)
+    ]);
+}
+
+function alert(model) {
+    return div('#modal1.modal', [
+        div('.modal-content', [model.alertMessage]),
+        div('.modal-footer', [
+            a('.modal-close.waves-effect.waves-green.btn-flat', ['Ok'])
+        ])
     ]);
 }
 
 function emailSearch(dispatch, model) {
-    return div('#searchContainer', [
-        icon.calendar,
-        span(['2/2/2222-3/3/3333']),
-        icon.search,
+    const displayDate =  model.search_endDate && model.search_startDate ? `${model.search_startDate} - ${model.search_endDate}` : 'Pick a date range';
+    return div('#searchContainer', //{
+        // attributes: {
+            // 'data-date-range': model.search_endDate ? `${model.search_startDate} - ${model.search_endDate}` : '',
+            // onclick: (e) => dispatch(openStartDatePickerMSG(e))
+        // }},
+        [
+        div(
+            '.icon-search',
+            {onclick: () => dispatch(getEmailsMSG)},
+            [icon.search]
+        ),
+        div(
+            '.icon-calendar',
+            {onclick: () => dispatch(openStartDatePickerMSG)},
+            [icon.calendar]
+        ),
+        span(
+            '.displayDate',
+            {onclick: () => dispatch(openStartDatePickerMSG)},
+            [displayDate]
+        ),
+        input('#date01', {type:'hidden'}),
+        input('#date02', {type:'hidden'})
     ]);
 }
 

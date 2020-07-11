@@ -22,7 +22,7 @@ export const arrow_thin = h(
     ]
 );
 
-export const calendar = h('svg', {class: 'icon-calendar', 'xmlns':'http://www.w3.org/2000/svg','viewBox':'0 0 19.86244 18'},
+export const calendar = h('svg', {'xmlns':'http://www.w3.org/2000/svg','viewBox':'0 0 19.86244 18'},
     [
         h('path', {'class':'a','d':'M18.77607,1.862H16.75882V3.10342h1.86207v13.6552H1.24154V3.10342H3.10362V1.862H1.08637A1.10484,1.10484,0,0,0,.00016,2.98517V16.87655A1.10484,1.10484,0,0,0,1.08606,18h17.69a1.10483,1.10483,0,0,0,1.08621-1.12314V2.98548A1.10482,1.10482,0,0,0,18.77638,1.862Z'}),
         h('rect', {'class':'a','x':'3.72431','y':'6.82756','width':'1.24138','height':'1.24138'}),
@@ -57,7 +57,7 @@ export const mail_sp = h('svg', {class: 'icon-mail-sp', 'xmlns':'http://www.w3.o
     ]
 );
 
-export const search = h('svg', {class: 'icon-search', 'xmlns':'http://www.w3.org/2000/svg','viewBox':'0 0 17.9803 18'},
+export const search = h('svg', {'xmlns':'http://www.w3.org/2000/svg','viewBox':'0 0 17.9803 18'},
     [
             h('path', {'class':'a','d':'M17.81684,17.04048,12.86753,12.064a7.33089,7.33089,0,1,0-.79573.79645L17.018,17.83373a.5629.5629,0,1,0,.79885-.79325ZM7.32474,13.47375a6.16023,6.16023,0,0,1-6.16583-6.1546V7.31352a6.16022,6.16022,0,1,1,6.16583,6.16023Z'})
     ]
