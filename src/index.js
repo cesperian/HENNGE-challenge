@@ -14,7 +14,7 @@ const initModel = {
     search_endDate: null,
     search_startDate_node: null,
     search_endDate_node: null,
-    sort_on: 3,
+    sort_on: 'date',
     sort_asc: true,
     search_result: null,
     alertMessage: ''

@@ -2,10 +2,11 @@
 import { diff, patch } from 'virtual-dom';
 import createElement from 'virtual-dom/create-element';
 const axios = require('axios').default;
-import {SETYPE, setStartDateMSG, setEndDateMSG, updateResultsMSG, showAlertMSG} from "./update";
+import {SETYPE, setStartDateMSG, setEndDateMSG, updateResultsMSG, showAlertMSG, updateBodyMSG} from "./update";
 
 // todo; find out if demo will be hosted and if so remove json from bundle
 const emails = require('./data.json');
+const emailBody = require('./data_body.json');
 
 function app(initModel, view, node, updateModel) {
 
@@ -60,10 +61,10 @@ function runSideEffects(cmd, dispatch, model) {
             break;
         }
         case SETYPE.GET_EMAILS: {
-            if(!(model.search_startDate && model.search_startDate)){
-                dispatch(showAlertMSG('Please pick a date range to search'));
-                break;
-            }
+            // if(!(model.search_startDate && model.search_startDate)){
+            //     dispatch(showAlertMSG('Please pick a date range to search'));
+            //     break;
+            // }
             if(location.protocol == 'file:') {
                 // dispatch(showAlert('This demo issues GET requests to a simulated api (local \'data.json\' file) and needs to be hosted in a development server to fetch email data'));
                 dispatch(updateResultsMSG(emails));
@@ -72,6 +73,18 @@ function runSideEffects(cmd, dispatch, model) {
             axios
                 .get('./data.json')
                 .then(r => dispatch(updateResultsMSG(r.data)))
+                .catch(e => console.log('err', e));
+            break;
+        }
+        case SETYPE.GET_EMAIL_BODY: {
+            const {id} = cmd;
+            if(location.protocol == 'file:') {
+                dispatch(updateBodyMSG(emailBody.body, id));
+                break;
+            };
+            axios
+                .get('./data_body.json')
+                .then(r => updateBodyMSG(emailBody.body, id))
                 .catch(e => console.log('err', e));
             break;
         }

@@ -1,3 +1,6 @@
+
+import sortBy from 'lodash/sortBy'
+
 const MSGS = {
     HTTP_GET_EMAILS: 'HTTP_GET_EMAILS',
     HTTP_GET_SHOW_EMAIL_BODY: 'HTTP_GET_SHOW_EMAIL_BODY',
@@ -7,14 +10,16 @@ const MSGS = {
     SET_DATE_END: 'SET_DATE_END',
     DATEPICKER_START_OPEN: 'DATEPICKER_START_OPEN',
     SHOW_ALERT: 'SHOW_ALERT',
-    UPDATE_RESULT: 'UPDATE_RESULT'
+    UPDATE_RESULT: 'UPDATE_RESULT',
+    UPDATE_EMAIL_BODY: 'UPDATE_EMAIL_BODY'
 };
 
 export const SETYPE = {
     OPEN_END_DATEPICKER: 'OPEN_END_DATEPICKER',
     OPEN_START_DATEPICKER: 'OPEN_START_DATEPICKER',
     GET_EMAILS: 'GET_EMAILS',
-    SHOW_ALERT: 'SHOW_ALERT'
+    SHOW_ALERT: 'SHOW_ALERT',
+    GET_EMAIL_BODY: 'GET_EMAIL_BODY'
 };
 
 export const openStartDatePickerMSG = {type: MSGS.DATEPICKER_START_OPEN};
@@ -33,10 +38,59 @@ export function updateResultsMSG(search_result) {
         search_result
     }
 }
+export function getToggleEmailBody(id) {
+    return {
+        type: MSGS.HTTP_GET_SHOW_EMAIL_BODY,
+        id
+    };
+}
+export function updateBodyMSG(body, id) {
+    return {
+        type: MSGS.UPDATE_EMAIL_BODY,
+        body,
+        id
+    };
+}
+export function sortColsMSG(sort_on) {
+    return {
+        type: MSGS.SORT_COLS,
+        sort_on
+    };
+}
+
 
 function updateModel(msg, model) {
     // debugger;
     switch (msg.type) {
+        case MSGS.SORT_COLS: {
+            const {sort_on} = msg;
+            const sorted = sortBy(model.search_result,[sort_on]);
+            // if same sort by col, then reverse order...
+            const sort_asc = sort_on === model.sort_on ? !model.sort_asc : model.sort_asc;
+            const search_result = !sort_asc ? sorted.reverse() : sorted;
+            // console.log(search_result);
+            return [{...model, search_result, sort_on, sort_asc}];
+        }
+        case MSGS.UPDATE_EMAIL_BODY: {
+            const {body, id} = msg;
+            const search_result = model.search_result.map(v => {
+                if(v.id === id) return {...v, body, showBody: true};
+                return v;
+            });
+            return [{...model, search_result}];
+        }
+        case MSGS.HTTP_GET_SHOW_EMAIL_BODY: {
+            const {id} = msg;
+            const email = model.search_result.find(v => v.id === id);
+            if(email.showBody){ // body has already been fetched. Just hide/show it
+                const search_result = model.search_result.map(v => {
+                   if(v.id === id)v.showBody = !v.showBody;
+                   return v;
+                });
+                return [{...model, search_result}];
+            }
+            return [model, {cmds: [{seType: SETYPE.GET_EMAIL_BODY, id}]}];
+        }
         case MSGS.UPDATE_RESULT: {
             const {search_result} = msg;
             return [{...model, search_result}];

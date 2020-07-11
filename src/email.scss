@@ -121,10 +121,10 @@
       background: #f5f5f5;
       //border-top: 2px solid #e8e6e6;
       border-bottom: 1px solid #e8e6e6;
+      &[data-sort-asc='false'] span svg{transform: rotate(180deg);}
       span{
         color: #000;
         font-weight: bold;
-        &[data-sort-asc='false'] svg{transform: rotate(180deg);}
         &[data-sort-on='false']{
           color: #8f8f8f;
           svg{display: none;}
@@ -150,15 +150,25 @@
       }
       .gridRowContainer{
         border-bottom: thin solid #e8e6e6;
-        &:hover{
-          cursor: pointer;
-          color: blue;
-          background-color: #f7f7ff;
-          svg{fill: blue;}
-        }
         .gridRow{
           @include gridRowCommon;
           svg{height: 16px;}
+          &:hover{
+            cursor: pointer;
+            color: blue;
+            background-color: #f7f7ff;
+            svg{fill: blue;}
+          }
+        }
+        .body{
+          // .hide handled by Materialize
+          padding: 9px 3%;
+          background: #f5f5f5;
+          a.btn-small{
+            display: block;
+            width: 77px;
+            margin-top: 5px;
+          }
         }
       } // gridRowContainer
     } // gridBody
