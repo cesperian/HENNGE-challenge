@@ -29,11 +29,7 @@ function alert(model) {
 
 function emailSearch(dispatch, model) {
     const displayDate =  model.search_endDate && model.search_startDate ? `${model.search_startDate} - ${model.search_endDate}` : 'Pick a date range';
-    return div('#searchContainer', //{
-        // attributes: {
-            // 'data-date-range': model.search_endDate ? `${model.search_startDate} - ${model.search_endDate}` : '',
-            // onclick: (e) => dispatch(openStartDatePickerMSG(e))
-        // }},
+    return div('#searchContainer',
         [
         div(
             '.icon-search',
@@ -68,12 +64,7 @@ function emailResults(dispatch, model) {
 function sortOn(model, id, dispatch) {
     const sortOn = model.sort_on === id;
     return {
-        attributes: {
-            'data-sort-on': sortOn,
-            // 'data-sort-asc': model.sort_asc.toString(),
-            // onclick: () => dispatch(sortColsMSG(id))
-            // ...o
-        },
+        attributes: {'data-sort-on': sortOn,},
         onclick: () => dispatch(sortColsMSG(id))
     };
 }
@@ -84,10 +75,6 @@ function gridHeader(model, dispatch) {
         span('.to', sortOn(model, 'to', dispatch), [a(['To']), icon.arrow_solid]),
         span('.subject', sortOn(model, 'subject', dispatch), [a(['Subject']), icon.arrow_solid]),
         span('.date', sortOn(model, 'date', dispatch), [a(['Date']), icon.arrow_solid])
-        // span('.from', sortOn(model, 'from'), [a(['From']), icon.arrow_solid]),
-        // span('.to', sortOn(model, 'to'), [a(['To']), icon.arrow_solid]),
-        // span('.subject', sortOn(model, 'subject'), [a(['Subject']), icon.arrow_solid]),
-        // span('.date', sortOn(model, 'date'), [a(['Date']), icon.arrow_solid])
     ]);
 }
 

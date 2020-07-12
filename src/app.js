@@ -1,4 +1,4 @@
-// import * as M from "materialize-css";
+
 import { diff, patch } from 'virtual-dom';
 import createElement from 'virtual-dom/create-element';
 const axios = require('axios').default;
@@ -34,7 +34,6 @@ function app(initModel, view, node, updateModel) {
     function dispatch(msg) {
         const [updatedModel, SFx] = updateModel(msg, model);
         model = updatedModel;
-        // console.log(model);
         if(SFx) SFx.cmds.forEach(cmd => runSideEffects(cmd, dispatch, model));
         const updatedView = view(dispatch, model);
         const patches = diff(currentView, updatedView);
@@ -61,15 +60,14 @@ function runSideEffects(cmd, dispatch, model) {
             break;
         }
         case SETYPE.GET_EMAILS: {
-            // if(!(model.search_startDate && model.search_startDate)){
-            //     dispatch(showAlertMSG('Please pick a date range to search'));
-            //     break;
-            // }
-            if(location.protocol == 'file:') {
-                // dispatch(showAlert('This demo issues GET requests to a simulated api (local \'data.json\' file) and needs to be hosted in a development server to fetch email data'));
+            if(!(model.search_startDate && model.search_startDate)){
+                dispatch(showAlertMSG('Please pick a date range to search'));
+                break;
+            }
+            if(location.protocol === 'file:') {
                 dispatch(updateResultsMSG(emails));
                 break;
-            };
+            }
             axios
                 .get('./data.json')
                 .then(r => dispatch(updateResultsMSG(r.data)))
@@ -78,7 +76,7 @@ function runSideEffects(cmd, dispatch, model) {
         }
         case SETYPE.GET_EMAIL_BODY: {
             const {id} = cmd;
-            if(location.protocol == 'file:') {
+            if(location.protocol === 'file:') {
                 dispatch(updateBodyMSG(emailBody.body, id));
                 break;
             };

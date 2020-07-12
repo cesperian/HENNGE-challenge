@@ -60,7 +60,6 @@ export function sortColsMSG(sort_on) {
 
 
 function updateModel(msg, model) {
-    // debugger;
     switch (msg.type) {
         case MSGS.SORT_COLS: {
             const {sort_on} = msg;
@@ -68,7 +67,6 @@ function updateModel(msg, model) {
             // if same sort by col, then reverse order...
             const sort_asc = sort_on === model.sort_on ? !model.sort_asc : model.sort_asc;
             const search_result = !sort_asc ? sorted.reverse() : sorted;
-            // console.log(search_result);
             return [{...model, search_result, sort_on, sort_asc}];
         }
         case MSGS.UPDATE_EMAIL_BODY: {
@@ -92,6 +90,7 @@ function updateModel(msg, model) {
             return [model, {cmds: [{seType: SETYPE.GET_EMAIL_BODY, id}]}];
         }
         case MSGS.UPDATE_RESULT: {
+            // todo; sort needs to be added here (post user-updated sort not reflected on subsequent searches)
             const {search_result} = msg;
             return [{...model, search_result}];
         }
@@ -109,24 +108,16 @@ function updateModel(msg, model) {
         case MSGS.SORT_COLS: return model;
         case MSGS.HIDE_EMAIL_BODY: return model;
         case MSGS.SET_DATE_START: {
-            // console.log(model.search_startDate_node.toString());
             const search_startDate = model.search_startDate_node.toString();
-            // const search_startDate = formatDateDisplay(model.search_startDate_node.date);
             return [{...model, search_startDate}, {cmds: [{seType: SETYPE.OPEN_END_DATEPICKER}]}];
         }
         case MSGS.SET_DATE_END: {
             const search_endDate = model.search_endDate_node.toString();
-            // console.log(search_endDate);
             return [{...model, search_endDate}];
         }
         default: return model;
     }
 }
-
-// function formatDateDisplay(date){
-//     if(date) return `${date.getFullYear()}/${date.getMonth()}/${date.getDay()}`;
-//     return null;
-// }
 
 
 export default updateModel;

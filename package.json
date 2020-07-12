@@ -7,7 +7,7 @@
     "type": "git",
     "url": "git+https://github.com/cesperian/HENNGE-challenge.git"
   },
-  "author": "Chris Esperian",
+  "author": "Chris Esperian <cesperian@gmail.com> (https://www.linkedin.com/in/squareearther/)",
   "dependencies": {
     "lodash": "^4.17.19",
     "materialize-css": "^1.0.0-rc.2"
