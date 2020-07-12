@@ -46,6 +46,7 @@ function emailSearch(dispatch, model) {
             [icon.calendar]
         ),
         span(
+            // todo; initial onclick should be length of cont? 'dead' space outside of span
             '.displayDate',
             {onclick: () => dispatch(openStartDatePickerMSG)},
             [displayDate]
@@ -95,10 +96,11 @@ function gridBody(model, hasResults, dispatch){
         `#gridBody${!hasResults ? '.empty' : ''}`,
         hasResults ? model.search_result.map(v => div('.gridRowContainer', [
             div('.gridRow', {onclick: () => dispatch(getToggleEmailBody(v.id))}, [
+                icon.mail_sp,
                 span('.from', [v.from]),
                 span('.to', {attributes: {'data-count': v.to.length}},[v.to.join(', ')]),
                 span('.subject', {attributes: {'data-attachments': v.has_attachments}}, [v.subject, v.has_attachments ? icon.paperclip : null]),
-                span('.date', [v.date]),
+                span('.date', [v.has_attachments ? icon.paperclip : null, v.date, icon.arrow_thin]),
             ]),
             v.body ? div(
                 `.body.${v.showBody ? 'show' : 'hide'}`,
