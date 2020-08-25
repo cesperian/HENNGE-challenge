@@ -82,7 +82,7 @@ function runSideEffects(cmd, dispatch, model) {
             };
             axios
                 .get('./data_body.json')
-                .then(r => updateBodyMSG(emailBody.body, id))
+                .then(r => dispatch(updateBodyMSG(r.data.body, id)))
                 .catch(e => console.log('err', e));
             break;
         }

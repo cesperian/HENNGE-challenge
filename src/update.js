@@ -80,7 +80,7 @@ function updateModel(msg, model) {
         case MSGS.HTTP_GET_SHOW_EMAIL_BODY: {
             const {id} = msg;
             const email = model.search_result.find(v => v.id === id);
-            if(email.showBody){ // body has already been fetched. Just hide/show it
+            if(email.body){ // body has already been fetched. Just hide/show it
                 const search_result = model.search_result.map(v => {
                    if(v.id === id)v.showBody = !v.showBody;
                    return v;
