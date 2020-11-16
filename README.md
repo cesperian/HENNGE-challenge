@@ -18,10 +18,10 @@ Assignment: Using the images below, create the UI mockup using HTML, CSS, Javasc
 
 Assignment: In the search result section, extend the UI mockup so that user can inspect the body of each email from the search result.
 
-![](01.PNG)
+![](01.png)
 
-![](02.PNG)
+![](02.png)
 
-![](03.PNG)
+![](03.png)
 
 
