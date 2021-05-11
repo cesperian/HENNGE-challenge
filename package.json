@@ -9,7 +9,7 @@
   },
   "author": "Chris Esperian <cesperian@gmail.com> (https://www.linkedin.com/in/squareearther/)",
   "dependencies": {
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.21",
     "materialize-css": "^1.0.0-rc.2"
   },
   "devDependencies": {
